@@ -32,10 +32,10 @@ describe('usePanelB', () => {
   afterAll(jest.resetAllMocks);
 
   test('should call batch correctly', () => {
-    renderHook(() => usePanelB(mockFirstName), {
+    const { result } = renderHook(() => usePanelB(mockFirstName), {
       wrapper,
     });
-
+    result.current.handleBlurFirstName();
     expect(mockBatch).toBeCalled();
   });
 });

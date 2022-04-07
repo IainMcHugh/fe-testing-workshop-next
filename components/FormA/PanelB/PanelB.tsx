@@ -1,5 +1,6 @@
 import { Field } from 'react-final-form';
 
+import { Panel } from '../../Panel/Panel';
 import { TextField } from '../../TextField/TextField';
 
 type TValues = Record<string, string>;
@@ -12,13 +13,14 @@ interface IPanelB {
 
 function PanelB({ form, values, handleBlur }: IPanelB) {
   return (
-    <div>
+    <Panel>
       <Field name="phoneNumber">
         {({ input }) => (
           <TextField
             label="Phone Number"
+            id={input.name}
             {...input}
-            placeholder="phone number"
+            placeholder="0871234567"
             onBlur={() => {
               input.onBlur();
               handleBlur && handleBlur(form, values);
@@ -30,8 +32,9 @@ function PanelB({ form, values, handleBlur }: IPanelB) {
         {({ input }) => (
           <TextField
             label="Email"
+            id={input.name}
             {...input}
-            placeholder="email address"
+            placeholder="john.doe@gmail.com"
             onBlur={() => {
               input.onBlur();
               handleBlur && handleBlur(form, values);
@@ -39,7 +42,7 @@ function PanelB({ form, values, handleBlur }: IPanelB) {
           />
         )}
       </Field>
-    </div>
+    </Panel>
   );
 }
 

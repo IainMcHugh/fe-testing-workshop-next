@@ -1,9 +1,16 @@
+import { Panel } from '../../Panel/Panel';
+import { Button } from '../../../styles';
+
 interface ISubmit {
   onClick: () => void;
 }
 
 function Submit({ onClick }: ISubmit) {
-  return <button onClick={onClick}>Submit</button>;
+  return (
+    <Panel>
+      <Button onClick={onClick}>Submit</Button>
+    </Panel>
+  );
 }
 
 export { Submit };

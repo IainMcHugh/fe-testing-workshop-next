@@ -4,7 +4,7 @@ import { MyForm } from '../Form/Form';
 
 function FormPage() {
   const handleSubmit = useCallback((values: any) => {
-    alert(values);
+    alert(JSON.stringify(values));
   }, []);
 
   return (

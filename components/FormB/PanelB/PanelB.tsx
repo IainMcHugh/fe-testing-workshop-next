@@ -4,28 +4,35 @@ import { OnBlur } from 'react-final-form-listeners';
 import { usePanelB } from './hooks/usePanelB';
 import { usePanelBFields } from './hooks/usePanelBFields';
 import { TextField } from '../../TextField/TextField';
+import { Panel } from '../../Panel/Panel';
 
 function PanelB() {
   const { firstName } = usePanelBFields();
   const { handleBlurFirstName } = usePanelB(firstName);
   return (
-    <div>
+    <Panel>
       <Field name="phoneNumber">
         {({ input }) => (
           <TextField
             label="Phone Number"
+            id={input.name}
             {...input}
-            placeholder="phone number"
+            placeholder="0871234567"
           />
         )}
       </Field>
       <Field name="email">
         {({ input }) => (
-          <TextField label="Email" {...input} placeholder="email" />
+          <TextField
+            label="Email"
+            {...input}
+            id={input.name}
+            placeholder="john.doe@gmail.com"
+          />
         )}
       </Field>
       <OnBlur name="firstName">{handleBlurFirstName}</OnBlur>
-    </div>
+    </Panel>
   );
 }
 

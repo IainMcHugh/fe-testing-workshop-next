@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Field } from 'react-final-form';
 
+import { Panel } from '../../Panel/Panel';
 import { TextField } from '../../TextField/TextField';
 
 type TValues = Record<string, string>;
@@ -19,17 +20,18 @@ function PanelA({ form, values, onBlurFirstName }: IPanelA) {
   }, [values]);
 
   return (
-    <div>
+    <Panel>
       <Field name="firstName">
         {({ input }) => (
           <TextField
             {...input}
+            id={input.name}
             label="First Name"
             onBlur={() => {
               input.onBlur();
               onBlurFirstName && onBlurFirstName(form, values);
             }}
-            placeholder="first name"
+            placeholder="John"
             required
           />
         )}
@@ -37,14 +39,15 @@ function PanelA({ form, values, onBlurFirstName }: IPanelA) {
       <Field name="lastName">
         {({ input }) => (
           <TextField
+            id={input.name}
             label="Last Name"
             {...input}
-            placeholder="last name"
+            placeholder="Doe"
             required
           />
         )}
       </Field>
-    </div>
+    </Panel>
   );
 }
 

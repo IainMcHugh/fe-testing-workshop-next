@@ -1,12 +1,16 @@
 import type { NextPage } from 'next';
+
 import { MyForm } from '../components/FormA/Form/Form';
-import styles from '../styles/Home.module.css';
+import { Main, FormWrapper, H1 } from '../styles';
 
 const Home: NextPage = () => {
   return (
-    <main className={styles.main}>
-      <MyForm isDraft={true} />
-    </main>
+    <Main>
+      <FormWrapper>
+        <H1>Form A</H1>
+        <MyForm isDraft={true} />
+      </FormWrapper>
+    </Main>
   );
 };
 

@@ -1,8 +1,14 @@
 import { useForm } from 'react-final-form';
+import { Button } from '../../../styles';
+import { Panel } from '../../Panel/Panel';
 
 function Submit() {
   const { submit } = useForm();
-  return <button onClick={submit}>Submit</button>;
+  return (
+    <Panel>
+      <Button onClick={submit}>Submit</Button>
+    </Panel>
+  );
 }
 
 export { Submit };

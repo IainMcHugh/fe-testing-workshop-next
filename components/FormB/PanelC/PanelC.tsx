@@ -4,6 +4,7 @@ import { usePanelC } from './hooks/usePanelC';
 import { usePanelCFields } from './hooks/usePanelCFields';
 
 import { TextField } from '../../TextField/TextField';
+import { Panel } from '../../Panel/Panel';
 
 function PanelC() {
   const { firstName, lastName } = usePanelCFields();
@@ -12,21 +13,31 @@ function PanelC() {
     lastName,
   );
   return (
-    <div>
+    <Panel>
       <Field name="currency">
         {({ input }) => (
-          <TextField label="Currency" {...input} placeholder="currency" />
+          <TextField
+            label="Currency"
+            {...input}
+            id={input.name}
+            placeholder="EUR"
+          />
         )}
       </Field>
       <Field name="price">
         {({ input }) => (
-          <TextField label="Price" {...input} placeholder="price" />
+          <TextField
+            label="Price"
+            {...input}
+            id={input.name}
+            placeholder="10"
+          />
         )}
       </Field>
       <OnBlur name="firstName">{handleBlurFirstName}</OnBlur>
       <OnBlur name="phoneNumber">{handleBlurPanelB}</OnBlur>
       <OnBlur name="email">{handleBlurPanelB}</OnBlur>
-    </div>
+    </Panel>
   );
 }
 

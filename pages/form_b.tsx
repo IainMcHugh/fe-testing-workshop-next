@@ -1,12 +1,16 @@
 import type { NextPage } from 'next';
+
 import { FormPage } from '../components/FormB/FormPage/FormPage';
-import styles from '../styles/Home.module.css';
+import { Main, FormWrapper, H1 } from '../styles';
 
 const Home: NextPage = () => {
   return (
-    <main className={styles.main}>
-      <FormPage />
-    </main>
+    <Main>
+      <FormWrapper>
+        <H1>Form B</H1>
+        <FormPage />
+      </FormWrapper>
+    </Main>
   );
 };
 

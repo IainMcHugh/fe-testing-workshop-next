@@ -21,9 +21,10 @@ describe('usePanelBFields', () => {
   afterEach(cleanup);
 
   test('field state is loaded correctly', () => {
-    const { result } = renderHook(() => usePanelBFields(), {
+    const { result, rerender } = renderHook(() => usePanelBFields(), {
       wrapper,
     });
+    rerender();
     expect(result.current.firstName).toBe(mockFirstName);
   });
 });

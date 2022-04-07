@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "testFiles": "**/*.*",
+  "viewportWidth": 375,
+  "viewportHeight": 667,
+  "video": false,
+  "projectId": "fe-testing-workshop-next",
+  "env": {
+    "baseUrl": "http://localhost:3000"
+  },
+  "blockHosts": ["*.hotjar.com"]
+}

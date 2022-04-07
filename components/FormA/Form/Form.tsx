@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { preventDefault } from '../../../helpers/preventDefault';
 import { PanelA } from '../PanelA/PanelA';
 import { PanelB } from '../PanelB/PanelB';
 import { PanelC } from '../PanelC/PanelC';
@@ -53,7 +54,7 @@ function MyForm({ isDraft }: IMyForm) {
         subscription={{ submitting: true, pristine: true, values: true }}
       >
         {({ handleSubmit, form, values }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={preventDefault}>
             <PanelA
               onBlurFirstName={handleBlurFirstName}
               form={form}

@@ -25,11 +25,11 @@ describe('usePanelCFields', () => {
   afterEach(cleanup);
 
   test('field state is loaded correctly', () => {
-    const { result } = renderHook(() => usePanelCFields(), {
+    const { result, rerender } = renderHook(() => usePanelCFields(), {
       wrapper,
     });
+    rerender();
     expect(result.current.firstName).toBe(mockFirstName);
     expect(result.current.lastName).toBe(mockLastName);
-    expect(result.current.currency).toBe(mockCurrency);
   });
 });

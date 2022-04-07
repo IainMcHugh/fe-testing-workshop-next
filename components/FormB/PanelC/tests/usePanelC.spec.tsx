@@ -20,6 +20,9 @@ jest.mock('react-final-form', () => ({
   useForm: () => ({
     change: mockChange,
     batch: mockBatch,
+    getFieldState: () => ({
+      value: mockCurrency,
+    }),
   }),
 }));
 
@@ -27,30 +30,31 @@ describe('usePanelC', () => {
   beforeEach(() => {
     mockFirstName = 'FIRST_NAME_TEST';
     mockLastName = 'LAST_NAME_TEST';
-    mockCurrency = 'EUR';
   });
   afterEach(() => {
     cleanup();
     jest.resetAllMocks();
   });
   afterAll(jest.resetAllMocks);
-  test('should call batch correctly if firstname', () => {
-    renderHook(() => usePanelC(mockFirstName, mockLastName, mockCurrency), {
-      wrapper,
-    });
-
+  test('handleBlurFirstName', () => {
+    const { result } = renderHook(
+      () => usePanelC(mockFirstName, mockLastName),
+      {
+        wrapper,
+      },
+    );
+    result.current.handleBlurFirstName();
     expect(mockBatch).toBeCalled();
   });
 
   test('should call change correctly if lastname and currency', () => {
     const { rerender } = renderHook(
-      () => usePanelC(mockFirstName, mockLastName, mockCurrency),
+      () => usePanelC(mockFirstName, mockLastName),
       {
         wrapper,
       },
     );
 
-    expect(mockBatch).toBeCalled();
     expect(mockChange).not.toBeCalled();
 
     mockLastName = 'messy';
@@ -60,14 +64,13 @@ describe('usePanelC', () => {
 
   test('handleBlurPanelB', () => {
     const { result } = renderHook(
-      () => usePanelC(mockFirstName, mockLastName, mockCurrency),
+      () => usePanelC(mockFirstName, mockLastName),
       {
         wrapper,
       },
     );
 
-    expect(mockBatch).toBeCalledTimes(1);
     result.current.handleBlurPanelB();
-    expect(mockBatch).toBeCalledTimes(2);
+    expect(mockBatch).toBeCalled();
   });
 });
