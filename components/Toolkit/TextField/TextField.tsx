@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from 'react';
-import { Label, Input } from '../../styles';
+import { Label, Input } from '../../../styles';
 import { RenderCount } from '../RenderCount/RenderCount';
-import { RelativeContainer } from '../../styles';
+import { RelativeContainer } from '../../../styles';
 
 interface ITextField extends InputHTMLAttributes<HTMLInputElement> {
   label: string;

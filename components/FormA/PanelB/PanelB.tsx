@@ -1,7 +1,7 @@
 import { Field } from 'react-final-form';
 
-import { Panel } from '../../Panel/Panel';
-import { TextField } from '../../TextField/TextField';
+import { Panel } from '../../Toolkit/Panel/Panel';
+import { TextField } from '../../Toolkit/TextField/TextField';
 
 type TValues = Record<string, string>;
 

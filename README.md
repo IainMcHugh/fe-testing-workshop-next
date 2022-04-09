@@ -4,7 +4,7 @@
 - Panel A: firstName, lastName
 - Panel B: phoneNumber, email
 - Panel C: currency, price
-- Sumbit button
+- Submit button
 
 # Requirements
 

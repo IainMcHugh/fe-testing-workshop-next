@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Field } from 'react-final-form';
 
-import { Panel } from '../../Panel/Panel';
-import { TextField } from '../../TextField/TextField';
+import { Panel } from '../../Toolkit/Panel/Panel';
+import { TextField } from '../../Toolkit/TextField/TextField';
 
 type TValues = Record<string, string>;
 
@@ -32,7 +32,6 @@ function PanelA({ form, values, onBlurFirstName }: IPanelA) {
               onBlurFirstName && onBlurFirstName(form, values);
             }}
             placeholder="John"
-            required
           />
         )}
       </Field>
@@ -43,7 +42,6 @@ function PanelA({ form, values, onBlurFirstName }: IPanelA) {
             label="Last Name"
             {...input}
             placeholder="Doe"
-            required
           />
         )}
       </Field>

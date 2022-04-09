@@ -3,8 +3,8 @@ import { OnBlur } from 'react-final-form-listeners';
 import { usePanelC } from './hooks/usePanelC';
 import { usePanelCFields } from './hooks/usePanelCFields';
 
-import { TextField } from '../../TextField/TextField';
-import { Panel } from '../../Panel/Panel';
+import { TextField } from '../../../Toolkit/TextField/TextField';
+import { Panel } from '../../../Toolkit/Panel/Panel';
 
 function PanelC() {
   const { firstName, lastName } = usePanelCFields();

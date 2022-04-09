@@ -69,3 +69,21 @@ export const RelativeContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const Spy = styled.pre`
+  font-size: 16px;
+  line-height: 24px;
+  background-color: #f1f2ee;
+  color: #0d1b2a;
+  padding: 24px;
+  border-radius: 8px;
+`;
+
+export const FormError = styled.p`
+  color: #f54b4b;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+`;

@@ -1,4 +1,4 @@
-import { Panel } from '../../Panel/Panel';
+import { Panel } from '../../Toolkit/Panel/Panel';
 import { Button } from '../../../styles';
 
 interface ISubmit {
@@ -8,7 +8,9 @@ interface ISubmit {
 function Submit({ onClick }: ISubmit) {
   return (
     <Panel>
-      <Button onClick={onClick}>Submit</Button>
+      <Button type="submit" onClick={onClick}>
+        Submit
+      </Button>
     </Panel>
   );
 }

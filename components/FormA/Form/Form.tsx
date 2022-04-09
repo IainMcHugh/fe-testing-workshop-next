@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { FORM_ERROR } from 'final-form';
+
+import formApi from '../../../api/formApi';
 import { preventDefault } from '../../../helpers/preventDefault';
+import { Spy } from '../../Toolkit/Spy/Spy';
 import { PanelA } from '../PanelA/PanelA';
 import { PanelB } from '../PanelB/PanelB';
 import { PanelC } from '../PanelC/PanelC';
@@ -12,8 +16,14 @@ interface IMyForm {
 
 function MyForm({ isDraft }: IMyForm) {
   const [isDraftThenSetPrice, setIsDraftThenSetPrice] = useState(false);
-  const onSubmit = (values: Record<string, string>) => {
-    alert(JSON.stringify(values));
+  const onSubmit = async (values: Record<string, string>) => {
+    try {
+      const { message } = await formApi.submitForm(values);
+      alert(message);
+    } catch (error: any) {
+      console.log(error.message);
+      return { [FORM_ERROR]: error.message };
+    }
   };
 
   const handleBlurFirstName = (form: any, values: Record<string, string>) => {
@@ -50,22 +60,25 @@ function MyForm({ isDraft }: IMyForm) {
     <div>
       <Form
         onSubmit={onSubmit}
-        // in order to pass values around, we need to subscribe to it
         subscription={{ submitting: true, pristine: true, values: true }}
       >
-        {({ handleSubmit, form, values }) => (
-          <form onSubmit={preventDefault}>
+        {({ handleSubmit, form, values, submitError }) => (
+          <form
+            onSubmit={(e) => {
+              preventDefault(e);
+              handleSubmit();
+            }}
+          >
             <PanelA
               onBlurFirstName={handleBlurFirstName}
               form={form}
               values={values}
             />
-
             <PanelB form={form} values={values} handleBlur={handleBlurPanelB} />
-
             <PanelC form={form} isDraftThenSetPrice={isDraftThenSetPrice} />
-
             <Submit onClick={handleSubmit} />
+            <Spy />
+            {submitError && <p>{submitError}</p>}
           </form>
         )}
       </Form>

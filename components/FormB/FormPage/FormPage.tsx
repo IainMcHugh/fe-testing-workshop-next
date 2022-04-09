@@ -1,11 +1,10 @@
-import { useCallback } from 'react';
 import { Form } from 'react-final-form';
+
 import { MyForm } from '../Form/Form';
+import { useSubmission } from '../hooks/useSubmission';
 
 function FormPage() {
-  const handleSubmit = useCallback((values: any) => {
-    alert(JSON.stringify(values));
-  }, []);
+  const { handleSubmit } = useSubmission();
 
   return (
     <div>

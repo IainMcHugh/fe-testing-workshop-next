@@ -1,6 +1,6 @@
 import { useForm } from 'react-final-form';
-import { Button } from '../../../styles';
-import { Panel } from '../../Panel/Panel';
+import { Button } from '../../../../styles';
+import { Panel } from '../../../Toolkit/Panel/Panel';
 
 function Submit() {
   const { submit } = useForm();
