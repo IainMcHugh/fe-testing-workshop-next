@@ -1,16 +1,18 @@
 import { useCallback } from 'react';
 import { useForm } from 'react-final-form';
 
-const usePanelB = (firstName: string) => {
-  const { batch, change } = useForm();
+import { IFormValues, FORM_VALUES } from '../../../config';
+
+const usePanelB = (firstName?: string) => {
+  const { batch, change } = useForm<IFormValues>();
 
   const handleBlurFirstName = useCallback(() => {
     if (firstName !== '') {
       batch(() => {
-        change('phoneNumber', '');
-        change('email', '');
-        change('currency', '');
-        change('price', '');
+        change(FORM_VALUES.phoneNumber, '');
+        change(FORM_VALUES.email, '');
+        change(FORM_VALUES.currency, '');
+        change(FORM_VALUES.price, '');
       });
     }
   }, [firstName]);

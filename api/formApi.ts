@@ -1,4 +1,5 @@
 import getConfig from 'next/config';
+import { IFormValues } from '../components/FormB/config';
 
 const {
   publicRuntimeConfig: { BASE_URL },
@@ -11,7 +12,7 @@ const submitFormConfig: RequestInit = {
   },
 };
 
-async function submitForm(values: Record<string, string>) {
+async function submitForm(values: IFormValues) {
   const response = await fetch(`${BASE_URL}/api/submission`, {
     ...submitFormConfig,
     body: JSON.stringify(values),

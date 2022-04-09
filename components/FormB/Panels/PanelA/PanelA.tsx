@@ -1,28 +1,28 @@
 import { Field } from 'react-final-form';
 import { Panel } from '../../../Toolkit/Panel/Panel';
 
+import { TField, FORM_VALUES } from '../../config';
+import { fields } from '../../constants';
 import { TextField } from '../../../Toolkit/TextField/TextField';
 
 function PanelA() {
   return (
     <Panel>
-      <Field name="firstName">
+      <Field<TField.FirstName> name={FORM_VALUES.firstName}>
         {({ input }) => (
           <TextField
-            label="First Name"
             {...input}
             id={input.name}
-            placeholder="John"
+            {...fields[FORM_VALUES.firstName]}
           />
         )}
       </Field>
-      <Field name="lastName">
+      <Field<TField.LastName> name={FORM_VALUES.lastName}>
         {({ input }) => (
           <TextField
-            label="Last Name"
             {...input}
             id={input.name}
-            placeholder="Doe"
+            {...fields[FORM_VALUES.lastName]}
           />
         )}
       </Field>

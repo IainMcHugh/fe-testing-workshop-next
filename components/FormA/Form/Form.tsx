@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 
+import { IFormValues } from '../../FormB/config';
 import formApi from '../../../api/formApi';
 import { preventDefault } from '../../../helpers/preventDefault';
 import { Spy } from '../../Toolkit/Spy/Spy';
@@ -16,7 +17,7 @@ interface IMyForm {
 
 function MyForm({ isDraft }: IMyForm) {
   const [isDraftThenSetPrice, setIsDraftThenSetPrice] = useState(false);
-  const onSubmit = async (values: Record<string, string>) => {
+  const onSubmit = async (values: IFormValues) => {
     try {
       const { message } = await formApi.submitForm(values);
       alert(message);
@@ -26,7 +27,7 @@ function MyForm({ isDraft }: IMyForm) {
     }
   };
 
-  const handleBlurFirstName = (form: any, values: Record<string, string>) => {
+  const handleBlurFirstName = (form: any, values: IFormValues) => {
     if (values?.firstName !== '') {
       form.batch(() => {
         form.change('phoneNumber', '');
@@ -37,7 +38,7 @@ function MyForm({ isDraft }: IMyForm) {
     }
   };
 
-  const handleBlurPanelB = (form: any, values: Record<string, string>) => {
+  const handleBlurPanelB = (form: any, values: IFormValues) => {
     form.batch(() => {
       form.change('currency', '');
       form.change('price', '');

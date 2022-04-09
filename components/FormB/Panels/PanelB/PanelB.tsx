@@ -1,6 +1,8 @@
 import { Field } from 'react-final-form';
 import { OnBlur } from 'react-final-form-listeners';
 
+import { TField, FORM_VALUES } from '../../config';
+import { fields } from '../../constants';
 import { usePanelB } from './hooks/usePanelB';
 import { usePanelBFields } from './hooks/usePanelBFields';
 import { TextField } from '../../../Toolkit/TextField/TextField';
@@ -11,27 +13,25 @@ function PanelB() {
   const { handleBlurFirstName } = usePanelB(firstName);
   return (
     <Panel>
-      <Field name="phoneNumber">
+      <Field<TField.PhoneNumber> name={FORM_VALUES.phoneNumber}>
         {({ input }) => (
           <TextField
-            label="Phone Number"
             id={input.name}
             {...input}
-            placeholder="0871234567"
+            {...fields[FORM_VALUES.phoneNumber]}
           />
         )}
       </Field>
-      <Field name="email">
+      <Field<TField.Email> name={FORM_VALUES.email}>
         {({ input }) => (
           <TextField
-            label="Email"
             {...input}
             id={input.name}
-            placeholder="john.doe@gmail.com"
+            {...fields[FORM_VALUES.email]}
           />
         )}
       </Field>
-      <OnBlur name="firstName">{handleBlurFirstName}</OnBlur>
+      <OnBlur name={FORM_VALUES.firstName}>{handleBlurFirstName}</OnBlur>
     </Panel>
   );
 }

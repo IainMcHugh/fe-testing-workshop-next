@@ -1,14 +1,13 @@
 import { Field } from 'react-final-form';
 
+import { IFormValues } from '../../FormB/config';
 import { Panel } from '../../Toolkit/Panel/Panel';
 import { TextField } from '../../Toolkit/TextField/TextField';
 
-type TValues = Record<string, string>;
-
 interface IPanelB {
   form: any;
-  values: TValues;
-  handleBlur?: (f: any, t: TValues) => void;
+  values: IFormValues;
+  handleBlur?: (f: any, t: IFormValues) => void;
 }
 
 function PanelB({ form, values, handleBlur }: IPanelB) {

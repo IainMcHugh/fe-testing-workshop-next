@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { Field } from 'react-final-form';
+import { IFormValues } from '../../FormB/config';
 
 import { Panel } from '../../Toolkit/Panel/Panel';
 import { TextField } from '../../Toolkit/TextField/TextField';
 
-type TValues = Record<string, string>;
-
 interface IPanelA {
   form: any;
-  values: TValues;
-  onBlurFirstName?: (f: any, t: TValues) => void;
+  values: IFormValues;
+  onBlurFirstName?: (f: any, t: IFormValues) => void;
 }
 
 function PanelA({ form, values, onBlurFirstName }: IPanelA) {

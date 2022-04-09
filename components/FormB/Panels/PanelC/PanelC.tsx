@@ -3,6 +3,8 @@ import { OnBlur } from 'react-final-form-listeners';
 import { usePanelC } from './hooks/usePanelC';
 import { usePanelCFields } from './hooks/usePanelCFields';
 
+import { TField, FORM_VALUES } from '../../config';
+import { fields } from '../../constants';
 import { TextField } from '../../../Toolkit/TextField/TextField';
 import { Panel } from '../../../Toolkit/Panel/Panel';
 
@@ -14,29 +16,27 @@ function PanelC() {
   );
   return (
     <Panel>
-      <Field name="currency">
+      <Field<TField.Currency> name={FORM_VALUES.currency}>
         {({ input }) => (
           <TextField
-            label="Currency"
             {...input}
             id={input.name}
-            placeholder="EUR"
+            {...fields[FORM_VALUES.currency]}
           />
         )}
       </Field>
-      <Field name="price">
+      <Field<TField.Price> name={FORM_VALUES.price}>
         {({ input }) => (
           <TextField
-            label="Price"
             {...input}
             id={input.name}
-            placeholder="10"
+            {...fields[FORM_VALUES.price]}
           />
         )}
       </Field>
-      <OnBlur name="firstName">{handleBlurFirstName}</OnBlur>
-      <OnBlur name="phoneNumber">{handleBlurPanelB}</OnBlur>
-      <OnBlur name="email">{handleBlurPanelB}</OnBlur>
+      <OnBlur name={FORM_VALUES.firstName}>{handleBlurFirstName}</OnBlur>
+      <OnBlur name={FORM_VALUES.phoneNumber}>{handleBlurPanelB}</OnBlur>
+      <OnBlur name={FORM_VALUES.email}>{handleBlurPanelB}</OnBlur>
     </Panel>
   );
 }

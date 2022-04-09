@@ -1,11 +1,15 @@
 import { useField, useForm } from 'react-final-form';
 
-const usePanelCFields = () => {
-  const { getFieldState } = useForm();
-  useField('firstName', { subscription: { active: true } });
-  const lastName = useField('lastName').input.value;
+import { FORM_VALUES, IFormValues, TField } from '../../../config';
 
-  const firstName = getFieldState('firstName')?.value;
+const usePanelCFields = () => {
+  const { getFieldState } = useForm<IFormValues>();
+  useField<TField.FirstName>(FORM_VALUES.firstName, {
+    subscription: { active: true },
+  });
+  const lastName = useField<TField.LastName>(FORM_VALUES.lastName).input.value;
+
+  const firstName = getFieldState(FORM_VALUES.firstName)?.value;
   return { firstName, lastName };
 };
 
