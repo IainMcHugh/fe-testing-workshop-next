@@ -30,5 +30,5 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: npm build
-          start: npm start
+          build: npm run build
+          start: npm run start
