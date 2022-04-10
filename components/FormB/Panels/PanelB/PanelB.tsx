@@ -1,6 +1,7 @@
 import { Field } from 'react-final-form';
 import { OnBlur } from 'react-final-form-listeners';
 
+import { handleErrors, required } from '../../../../helpers/form';
 import { TField, FORM_VALUES } from '../../config';
 import { fields } from '../../constants';
 import { usePanelB } from './hooks/usePanelB';
@@ -13,21 +14,26 @@ function PanelB() {
   const { handleBlurFirstName } = usePanelB(firstName);
   return (
     <Panel>
-      <Field<TField.PhoneNumber> name={FORM_VALUES.phoneNumber}>
-        {({ input }) => (
+      <Field<TField.PhoneNumber>
+        name={FORM_VALUES.phoneNumber}
+        validate={required}
+      >
+        {({ input, meta }) => (
           <TextField
             id={input.name}
             {...input}
             {...fields[FORM_VALUES.phoneNumber]}
+            error={handleErrors<TField.PhoneNumber>(meta)}
           />
         )}
       </Field>
-      <Field<TField.Email> name={FORM_VALUES.email}>
-        {({ input }) => (
+      <Field<TField.Email> name={FORM_VALUES.email} validate={required}>
+        {({ input, meta }) => (
           <TextField
             {...input}
             id={input.name}
             {...fields[FORM_VALUES.email]}
+            error={handleErrors<TField.Email>(meta)}
           />
         )}
       </Field>

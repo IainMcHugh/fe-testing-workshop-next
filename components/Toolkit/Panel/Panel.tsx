@@ -20,7 +20,7 @@ const Wrapper = styled.fieldset`
   }
 
   & > * {
-    margin-bottom: 24px;
+    margin-bottom: 8px;
   }
 
   & > *:last-child {

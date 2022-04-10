@@ -10,7 +10,7 @@ interface IMyForm {
 function MyForm({ isDraft }: IMyForm) {
   useDraft(isDraft);
   return (
-    <form onSubmit={preventDefault}>
+    <form onSubmit={preventDefault} noValidate>
       <Panels.PanelA />
       <Panels.PanelB />
       <Panels.PanelC />
