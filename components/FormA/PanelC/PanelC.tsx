@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Field } from 'react-final-form';
 
+import { handleErrors, required } from '../../../helpers/form';
 import { Panel } from '../../Toolkit/Panel/Panel';
 import { TextField } from '../../Toolkit/TextField/TextField';
 
@@ -18,23 +19,25 @@ function PanelC({ form, isDraftThenSetPrice }: IPanelC) {
 
   return (
     <Panel>
-      <Field name="currency">
-        {({ input }) => (
+      <Field name="currency" validate={required}>
+        {({ input, meta }) => (
           <TextField
             label="Currency"
             {...input}
             id={input.name}
             placeholder="EUR"
+            error={handleErrors(meta)}
           />
         )}
       </Field>
-      <Field name="price">
-        {({ input }) => (
+      <Field name="price" validate={required}>
+        {({ input, meta }) => (
           <TextField
             label="Price"
             {...input}
             id={input.name}
             placeholder="10"
+            error={handleErrors(meta)}
           />
         )}
       </Field>

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Field } from 'react-final-form';
-import { IFormValues } from '../../FormB/config';
 
+import { handleErrors, required } from '../../../helpers/form';
+import { IFormValues } from '../../FormB/config';
 import { Panel } from '../../Toolkit/Panel/Panel';
 import { TextField } from '../../Toolkit/TextField/TextField';
 
@@ -20,8 +21,8 @@ function PanelA({ form, values, onBlurFirstName }: IPanelA) {
 
   return (
     <Panel>
-      <Field name="firstName">
-        {({ input }) => (
+      <Field name="firstName" validate={required}>
+        {({ input, meta }) => (
           <TextField
             {...input}
             id={input.name}
@@ -31,16 +32,18 @@ function PanelA({ form, values, onBlurFirstName }: IPanelA) {
               onBlurFirstName && onBlurFirstName(form, values);
             }}
             placeholder="John"
+            error={handleErrors(meta)}
           />
         )}
       </Field>
-      <Field name="lastName">
-        {({ input }) => (
+      <Field name="lastName" validate={required}>
+        {({ input, meta }) => (
           <TextField
             id={input.name}
             label="Last Name"
             {...input}
             placeholder="Doe"
+            error={handleErrors(meta)}
           />
         )}
       </Field>

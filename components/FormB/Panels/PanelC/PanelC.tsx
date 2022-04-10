@@ -3,6 +3,7 @@ import { OnBlur } from 'react-final-form-listeners';
 import { usePanelC } from './hooks/usePanelC';
 import { usePanelCFields } from './hooks/usePanelCFields';
 
+import { handleErrors, required } from '../../../../helpers/form';
 import { TField, FORM_VALUES } from '../../config';
 import { fields } from '../../constants';
 import { TextField } from '../../../Toolkit/TextField/TextField';
@@ -16,21 +17,23 @@ function PanelC() {
   );
   return (
     <Panel>
-      <Field<TField.Currency> name={FORM_VALUES.currency}>
-        {({ input }) => (
+      <Field<TField.Currency> name={FORM_VALUES.currency} validate={required}>
+        {({ input, meta }) => (
           <TextField
             {...input}
             id={input.name}
             {...fields[FORM_VALUES.currency]}
+            error={handleErrors<TField.Currency>(meta)}
           />
         )}
       </Field>
-      <Field<TField.Price> name={FORM_VALUES.price}>
-        {({ input }) => (
+      <Field<TField.Price> name={FORM_VALUES.price} validate={required}>
+        {({ input, meta }) => (
           <TextField
             {...input}
             id={input.name}
             {...fields[FORM_VALUES.price]}
+            error={handleErrors<TField.Price>(meta)}
           />
         )}
       </Field>

@@ -42,13 +42,19 @@ export const Label = styled.label`
   margin-bottom: 8px;
 `;
 
-export const Input = styled.input`
+type TInput = { error: boolean };
+export const Input = styled.input<TInput>`
   font-size: 12px;
   line-height: 16px;
   padding: 8px 16px;
   border-radius: 4px;
-  border: 1px solid grey;
-  color: #0d1b2a;
+  border: ${({ error }) => `1px solid ${error ? '#f54b4b' : '#6e757d'}`};
+  color: ${({ error }) => (error ? '#f54b4b' : '#0d1b2a')};
+  margin-bottom: 8px;
+
+  &::placeholder {
+    color: ${({ error }) => (error ? '#f54b4b' : '#6e757d')};
+  }
 `;
 
 export const Footer = styled.footer`
@@ -100,4 +106,11 @@ export const FormError = styled.p`
   text-align: center;
   margin: 0;
   padding: 0;
+`;
+
+export const Error = styled.p`
+  height: 16px;
+  color: #f54b4b;
+  font-size: 14px;
+  line-height: 16px;
 `;
