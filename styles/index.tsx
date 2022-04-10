@@ -14,11 +14,25 @@ export const A = styled.a`
 export const P = styled.p``;
 
 export const Button = styled.button`
+  display: inline-block;
   padding: 8px;
   border: 0;
   border-radius: 4px;
   color: white;
   background-color: #0d1b2a;
+
+  > * {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  & > *:nth-child(1) {
+    margin-right: 12px;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+  }
 `;
 
 export const Label = styled.label`
