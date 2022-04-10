@@ -15,19 +15,20 @@ jobs:
       - name: install packages
         run: npm ci
       - name: Restore next build
+      # see: https://nextjs.org/docs/messages/no-cache#github-actions
         uses: actions/cache@v2
-        id: restore-build-cache
-        env:
-          cache-name: cache-next-build
         with:
-          path: .next/cache
-          # change this if you prefer a more strict cache
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: ./node_modules/.bin/next build
+          build: npm build
           start: npm start
