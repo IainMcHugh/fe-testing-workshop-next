@@ -47,7 +47,7 @@ describe('usePanelC', () => {
     expect(mockBatch).toBeCalled();
   });
 
-  test('should call change correctly if lastname and currency', () => {
+  test('if currency is "EUR" and last name is set to "messy", the currency should be updated to "USD"', () => {
     const { rerender } = renderHook(
       () => usePanelC(mockFirstName, mockLastName),
       {
