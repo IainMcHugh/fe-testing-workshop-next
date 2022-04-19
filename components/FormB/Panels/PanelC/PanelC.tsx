@@ -1,20 +1,26 @@
-import { Field } from 'react-final-form';
+import { Field, useField, useForm } from 'react-final-form';
 import { OnBlur } from 'react-final-form-listeners';
-import { usePanelC } from './hooks/usePanelC';
-import { usePanelCFields } from './hooks/usePanelCFields';
 
 import { handleErrors, required } from '../../../../helpers/form';
-import { TField, FORM_VALUES } from '../../config';
+import { TField, FORM_VALUES, IFormValues } from '../../config';
 import { fields } from '../../constants';
 import { TextField } from '../../../Toolkit/TextField/TextField';
 import { Panel } from '../../../Toolkit/Panel/Panel';
+import { usePanelC } from './hooks/usePanelC';
 
 function PanelC() {
-  const { firstName, lastName } = usePanelCFields();
-  const { handleBlurFirstName, handleBlurPanelB } = usePanelC(
-    firstName,
-    lastName,
-  );
+  const { batch, change, getFieldState } = useForm<IFormValues>();
+  useField<TField.FirstName>(FORM_VALUES.firstName, {
+    subscription: { active: true },
+  });
+  const lastName = useField<TField.LastName>(FORM_VALUES.lastName).input.value;
+  const firstName = getFieldState(FORM_VALUES.firstName)?.value;
+
+  const { handleBlurFirstName, handleBlurPanelB } = usePanelC({
+    fieldSubscriptions: { firstName, lastName },
+    formMethods: { batch, change, getFieldState },
+  });
+
   return (
     <Panel>
       <Field<TField.Currency> name={FORM_VALUES.currency} validate={required}>

@@ -1,11 +1,23 @@
 import { useEffect, useCallback } from 'react';
-import { useForm } from 'react-final-form';
 
-import { FORM_VALUES, IFormValues } from '../../../config';
+import { FORM_VALUES, TField, TFormMethods } from '../../../config';
 
-const usePanelC = (firstName?: string, lastName?: string) => {
-  const { batch, change, getFieldState } = useForm<IFormValues>();
+interface IUsePanelC {
+  fieldSubscriptions: {
+    firstName?: TField.FirstName;
+    lastName: TField.LastName;
+  };
+  formMethods: {
+    batch: TFormMethods.Batch;
+    change: TFormMethods.Change;
+    getFieldState: TFormMethods.GetFieldState;
+  };
+}
 
+const usePanelC = ({
+  fieldSubscriptions: { firstName, lastName },
+  formMethods: { batch, change, getFieldState },
+}: IUsePanelC) => {
   const handleBlurPanelB = useCallback(() => {
     batch(() => {
       change(FORM_VALUES.currency, '');

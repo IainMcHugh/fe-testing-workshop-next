@@ -1,3 +1,5 @@
+import { FieldState } from 'final-form';
+
 export interface IFormValues {
   firstName: string;
   lastName: string;
@@ -23,4 +25,15 @@ export namespace TField {
   export type Email = IFormValues[FORM_VALUES.email];
   export type Currency = IFormValues[FORM_VALUES.currency];
   export type Price = IFormValues[FORM_VALUES.price];
+}
+
+export namespace TFormMethods {
+  export type Batch = (fn: () => void) => void;
+  export type Change = <F extends keyof IFormValues>(
+    name: F,
+    value?: IFormValues[F] | undefined,
+  ) => void;
+  export type GetFieldState = <F extends keyof IFormValues>(
+    field: F,
+  ) => FieldState<IFormValues[F]> | undefined;
 }
