@@ -33,10 +33,10 @@ describe('usePanelC', () => {
     expect(mockBatch).toBeCalled();
   });
 
-  test('if currency is "EUR" and last name is set to "messy", the currency should be updated to "USD"', () => {
+  test('if currency is "EUR" and last name is set to "fe-connect", the currency should be updated to "USD"', () => {
     const { rerender } = renderHook(() => usePanelC(mockProps));
     expect(mockChange).not.toBeCalled();
-    mockProps.fieldSubscriptions.lastName = 'messy';
+    mockProps.fieldSubscriptions.lastName = 'fe-connect';
     rerender();
     expect(mockChange).toBeCalledWith('currency', 'USD');
   });

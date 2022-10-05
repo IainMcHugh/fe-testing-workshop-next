@@ -23,11 +23,11 @@ describe('Form A integration test', () => {
     cy.getByLabel('Price').should('have.value', '');
   });
 
-  it('last name messy and currency EUR changes to USD', () => {
+  it('last name fe-connect and currency EUR changes to USD', () => {
     cy.visit('/form_a');
 
     cy.getByLabel('Currency').type('EUR');
-    cy.getByLabel('Last Name').type('messy');
+    cy.getByLabel('Last Name').type('fe-connect');
 
     cy.getByLabel('Currency').should('have.value', 'USD');
   });

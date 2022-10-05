@@ -38,7 +38,7 @@ const usePanelC = ({
 
   useEffect(() => {
     const currency = getFieldState(FORM_VALUES.currency)?.value;
-    if (lastName === 'messy' && currency === 'EUR') {
+    if (lastName === 'fe-connect' && currency === 'EUR') {
       change(FORM_VALUES.currency, 'USD');
     }
   }, [lastName]);

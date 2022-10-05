@@ -14,7 +14,7 @@ interface IPanelA {
 
 function PanelA({ form, values, onBlurFirstName }: IPanelA) {
   useEffect(() => {
-    if (values?.lastName === 'messy' && values?.currency === 'EUR') {
+    if (values?.lastName === 'fe-connect' && values?.currency === 'EUR') {
       form.change('currency', 'USD');
     }
   }, [values]);
